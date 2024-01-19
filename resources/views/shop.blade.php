@@ -223,7 +223,7 @@
                         <div class="accordion-item category-price">
                             <h2 class="accordion-header" id="headingFour">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseFour">Price</button>
+                                    data-bs-target="#collapseFour">Harga</button>
                             </h2>
                             <div id="collapseFour" class="accordion-collapse collapse show"
                                 aria-labelledby="headingFour" data-bs-parent="#accordionExample">
@@ -248,22 +248,19 @@
                                 <div class="accordion-body">
                                     <ul class="category-list">
                                         <li>
-                                            <a href="javascript:void(0)">xs</a>
+                                            <a href="javascript:void(0)">S</a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0)">sm</a>
+                                            <a href="javascript:void(0)">M</a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0)">md</a>
+                                            <a href="javascript:void(0)">L</a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0)">lg</a>
+                                            <a href="javascript:void(0)">XL</a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0)">xl</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)">xxl</a>
+                                            <a href="javascript:void(0)">XXL</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -344,7 +341,7 @@
                             <h2 class="accordion-header" id="headingSeven">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseSeven">
-                                    Discount Range
+                                    Diskon
                                 </button>
                             </h2>
                             <div id="collapseSeven" class="accordion-collapse collapse show"
@@ -355,24 +352,21 @@
                                             <div class="form-check ps-0 custome-form-check">
                                                 <input class="checkbox_animated check-it" type="checkbox"
                                                     id="flexCheckDefault19">
-                                                <label class="form-check-label" for="flexCheckDefault19">5% and
-                                                    above</label>
+                                                <label class="form-check-label" for="flexCheckDefault19">Diskon 5%</label>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="form-check ps-0 custome-form-check">
                                                 <input class="checkbox_animated check-it" type="checkbox"
                                                     id="flexCheckDefault20">
-                                                <label class="form-check-label" for="flexCheckDefault20">10% and
-                                                    above</label>
+                                                <label class="form-check-label" for="flexCheckDefault20">Diskon 10%</label>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="form-check ps-0 custome-form-check">
                                                 <input class="checkbox_animated check-it" type="checkbox"
                                                     id="flexCheckDefault21">
-                                                <label class="form-check-label" for="flexCheckDefault21">20% and
-                                                    above</label>
+                                                <label class="form-check-label" for="flexCheckDefault21">Diskon 20%</label>
                                             </div>
                                         </li>
                                     </ul>
@@ -401,19 +395,19 @@
                                     <div class="dropdown select-featured">
                                         <select class="form-select" name="orderby" id="orderby">
                                             <option value="-1" selected="">Default</option>
-                                            <option value="1">Date, New To Old</option>
-                                            <option value="2">Date, Old To New</option>
-                                            <option value="3">Price, Low To High</option>
-                                            <option value="4">Price, High To Low</option>
+                                            <option value="1">Baru ke Lama</option>
+                                            <option value="2">Lama ke Baru</option>
+                                            <option value="3">Rendah ke Tinggi</option>
+                                            <option value="4">Tinggi ke Rendah</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="dropdown select-featured">
                                     <select class="form-select" name="size" id="pagesize">
-                                        <option value="12" selected="">12 Products Per Page</option>
-                                        <option value="24">24 Products Per Page</option>
-                                        <option value="52">52 Products Per Page</option>
-                                        <option value="100">100 Products Per Page</option>
+                                        <option value="12" {{$size == 12 ? 'selected':''}}>12 Produk</option>
+                                        <option value="24" {{$size == 24 ? 'selected':''}}>24 Produk</option>
+                                        <option value="52" {{$size == 52 ? 'selected':''}}>52 Produk</option>
+                                        <option value="100" {{$size == 100 ? 'selected':''}}>100 Produk</option>
                                     </select>
                                 </div>
                             </div>
@@ -560,4 +554,17 @@
     </div>
 </section>
 <!-- Subscribe Section End -->    
+<form id="frmFilter" method="GET">
+    <input type="hidden" name="page" id="page" value="{{$page}}"/>
+    <input type="hidden" name="size" id="size" value="{{$size}}"/>
+</form>
 @endsection
+
+@push('scripts')
+    <script>
+        $("#pagesize").on("change",function(){
+            $("#size").val($("#pagesize option:selected").val());
+            $("#frmFilter").submit();
+        });
+    </script>
+@endpush

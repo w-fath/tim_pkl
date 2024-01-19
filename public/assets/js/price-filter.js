@@ -6,17 +6,17 @@ $(function () {
     $inputTo = $(".js-input-to"),
     instance,
     min = 0,
-    max = 500,
+    max = 500000,
     from = 0,
     to = 0;
 
   $range.ionRangeSlider({
     type: "double",
     min: min,
-    max: max,
+    max: max, 
     from: 0,
-    to: 500,
-    prefix: "$ ",
+    to: 500000,
+    prefix: "Rp ",
     onStart: updateInputs,
     onChange: updateInputs,
     step: 5,
@@ -29,8 +29,8 @@ $(function () {
   instance = $range.data("ionRangeSlider");
 
   function updateInputs(data) {
-    from = "$" + data.from;
-    to = "$" + data.to;
+    from = "Rp" + data.from;
+    to = "Rp" + data.to;
 
     $inputFrom.prop("value", from);
     $inputTo.prop("value", to);   
