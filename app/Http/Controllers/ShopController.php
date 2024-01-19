@@ -7,10 +7,16 @@ use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::orderBy('created_at','DESC')->paginate(12);
-        return view('shop',['products'=>$products]);
+        $page = $request->query("page");
+        $size = $request->query("size");
+        if(!$page)
+            $page = 1;
+        if(!$size)
+            $size = 12;
+        $products = Product::orderBy('created_at','DESC')->paginate($size);
+        return view('shop',['products'=>$products,'page'=>$page,'size'=>$size]);
     }
     public function productDetails($slug)
     {

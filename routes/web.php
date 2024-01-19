@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
-| 
+|
 */
 
 Route::get('/',[AppController::class,'index'])->name('app.index');
@@ -24,6 +24,9 @@ Route::get('/product/{slug}',[ShopController::class, 'productDetails'])->name('s
 
 route::get('/cart',[CartController::class,'index'])->name('cart.index');
 Route::post('/cart/store',[CartController::class,'addToCart'])->name('cart.store');
+Route::put('/cart/update',[CartController::class,'updateCart'])->name('cart.update');
+Route::delete('/cart/remove',[CartController::class,'removeItem'])->name('cart.remove');
+Route::delete('/cart/clear',[CartController::class,'clearCart'])->name('cart.clear');
 
 Auth::routes();
 

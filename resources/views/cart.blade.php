@@ -82,14 +82,12 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h2>${{$item->price}}</h2>
+                                    <h2>Rp{{$item->price}}</h2>
                                 </td>
                                 <td>
                                     <div class="qty-box">
                                         <div class="input-group">
-                                            <input type="number" name="quantity"
-                                                data-rowid="ba02b0dddb000b25445168300c65386d"
-                                                class="form-control input-number" value="{{$item->qty}}">
+                                            <input type="number" name="quantity" data-rowid="{{$item->rowId}}" onchange="updateQuantity(this)" class="form-control input-number" value="{{$item->qty}}">
                                         </div>
                                     </div>
                                 </td>
@@ -97,7 +95,7 @@
                                     <h2 class="td-color">Rp{{$item->subtotal()}}</h2>
                                 </td>
                                 <td>
-                                    <a href="javascript:void(0)">
+                                    <a href="javascript:void(0)" onclick="removeItemrowCart('{{$item->rowId}}')">
                                         <i class="fas fa-times"></i>
                                     </a>
                                 </td>
@@ -110,15 +108,14 @@
                     <div class="row">
                         <div class="col-sm-7 col-5 order-1">
                             <div class="left-side-button text-end d-flex d-block justify-content-end">
-                                <a href="javascript:void(0)"
-                                    class="text-decoration-underline theme-color d-block text-capitalize">clear
-                                    all items</a>
+                                <a href="javascript:void(0)" onclick="clearCart()"
+                                    class="text-decoration-upercrace theme-color d-block text-capitalize">Hapus Semua</a>
                             </div>
                         </div>
                         <div class="col-sm-5 col-7">
                             <div class="left-side-button float-start">
                                 <a href="{{route('shop.index')}}" class="btn btn-solid-default btn fw-bold mb-0 ms-0">
-                                    <i class="fas fa-arrow-left"></i> Continue Shopping</a>
+                                    <i class="fas fa-arrow-left"></i> Lanjut Belanja</a>
                             </div>
                         </div>
                     </div>
@@ -130,10 +127,10 @@
                             <div class="promo-section">
                                 <form class="row g-3">
                                     <div class="col-7">
-                                        <input type="text" class="form-control" id="number" placeholder="Coupon Code">
+                                        <input type="text" class="form-control" id="number" placeholder="Kode Kupon">
                                     </div>
                                     <div class="col-5">
-                                        <button class="btn btn-solid-default rounded btn">Apply Coupon</button>
+                                        <button class="btn btn-solid-default rounded btn">Ambil  kupon</button>
                                     </div>
                                 </form>
                             </div>
@@ -151,13 +148,13 @@
                                 <div class="cart-box-details">
                                     <div class="total-details">
                                         <div class="top-details">
-                                            <h3>Cart Totals</h3>
+                                            <h3>Struk Total</h3>
                                             <h6>Sub Total <span>Rp {{Cart::instance('cart')->subtotal()}}</span></h6>
-                                            <h6>Tax <span>${{Cart::instance('cart')->tax()}}</span></h6>
-                                            <h6>Total <span>${{Cart::instance('cart')->total()}}</span></h6>
+                                            <h6>Tax <span>Rp{{Cart::instance('cart')->tax()}}</span></h6>
+                                            <h6>Total <span>Rp{{Cart::instance('cart')->total()}}</span></h6>
                                         </div>
                                         <div class="bottom-details">
-                                            <a href="checkout">Process Checkout</a>
+                                            <a href="checkout">Proses Checkout</a>
                                         </div>
                                     </div>
                                 </div>
@@ -177,4 +174,41 @@
         @endif
     </div>
 </section>
+<form id="updateCartQty" action="{{route('cart.update')}}" method="POST">
+    @csrf
+    @method('put')
+    <input type="hidden" id="rowId" name="rowId"/>
+    <input type="hidden" id="quantity" name="quantity"/>
+</form>
+
+<form action="{{route('cart.remove')}}" id="deleteFormCart" method="POST">
+    @csrf
+    @method('delete')
+    <input type="hidden" id="rowId_D" name="rowId"/>
+</form>
+<form action="{{route('cart.clear')}}" id="clearCart" method="POST">
+    @csrf
+    @method('delete')
+</form>
+
 @endsection
+
+@push('scripts')
+    <script>
+        function updateQuantity(qty)
+        {
+            $('#rowId').val($(qty).data('rowid'));
+            $('#quantity').val($(qty).val());
+            $('#updateCartQty').submit();
+        }
+        function removeItemrowCart(rowId)
+        {
+            $('#rowId_D').val(rowId);
+            $('#deleteFormCart').submit();
+        }
+        function clearCart()
+        {
+            $('#clearCart').submit();
+        }
+    </script>
+@endpush
