@@ -87,7 +87,7 @@
                                 <td>
                                     <div class="qty-box">
                                         <div class="input-group">
-                                            <input type="number" name="quantity" data-rowid="{{$item->rowId}}" onchange="updateQuantity(this)" class="form-control input-number" value="{{$item->qty}}">
+                                            <input type="text" name="quantity" data-rowid="{{$item->rowId}}" onchange="updateQuantity(this)" class="form-control input-number" value="{{$item->qty}}">
                                         </div>
                                     </div>
                                 </td>
@@ -96,7 +96,7 @@
                                 </td>
                                 <td>
                                     <a href="javascript:void(0)" onclick="removeItemrowCart('{{$item->rowId}}')">
-                                        <i class="fas fa-times"></i>
+                                        <i class='fas fa-trash-alt' style='font-size:22px'></i>
                                     </a>
                                 </td>
                             </tr>

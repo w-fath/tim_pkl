@@ -64,96 +64,15 @@
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body category-scroll">
                                     <ul class="category-list">
-
-                                        <li>
-                                            <div class="form-check ps-0 custome-form-check">
-                                                <input class="checkbox_animated check-it" id="br1" name="brands"
-                                                    value="1" type="checkbox">
-                                                <label class="form-check-label">Quis Et</label>
-                                                <p class="font-light">(1)</p>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="form-check ps-0 custome-form-check">
-                                                <input class="checkbox_animated check-it" id="br2" name="brands"
-                                                    value="2" type="checkbox">
-                                                <label class="form-check-label">Aliquam Doloremque</label>
-                                                <p class="font-light">(0)</p>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="form-check ps-0 custome-form-check">
-                                                <input class="checkbox_animated check-it" id="br3" name="brands"
-                                                    value="3" type="checkbox">
-                                                <label class="form-check-label">Sequi Repellendus</label>
-                                                <p class="font-light">(1)</p>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="form-check ps-0 custome-form-check">
-                                                <input class="checkbox_animated check-it" id="br4" name="brands"
-                                                    value="4" type="checkbox">
-                                                <label class="form-check-label">Repellendus Quia</label>
-                                                <p class="font-light">(2)</p>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="form-check ps-0 custome-form-check">
-                                                <input class="checkbox_animated check-it" id="br5" name="brands"
-                                                    value="5" type="checkbox">
-                                                <label class="form-check-label">Sint Iste</label>
-                                                <p class="font-light">(0)</p>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="form-check ps-0 custome-form-check">
-                                                <input class="checkbox_animated check-it" id="br6" name="brands"
-                                                    value="6" type="checkbox">
-                                                <label class="form-check-label">Et Eos</label>
-                                                <p class="font-light">(6)</p>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="form-check ps-0 custome-form-check">
-                                                <input class="checkbox_animated check-it" id="br7" name="brands"
-                                                    value="7" type="checkbox">
-                                                <label class="form-check-label">Vel Explicabo</label>
-                                                <p class="font-light">(2)</p>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="form-check ps-0 custome-form-check">
-                                                <input class="checkbox_animated check-it" id="br8" name="brands"
-                                                    value="8" type="checkbox">
-                                                <label class="form-check-label">Ipsam Earum</label>
-                                                <p class="font-light">(4)</p>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="form-check ps-0 custome-form-check">
-                                                <input class="checkbox_animated check-it" id="br9" name="brands"
-                                                    value="9" type="checkbox">
-                                                <label class="form-check-label">Sequi Reprehenderit</label>
-                                                <p class="font-light">(5)</p>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="form-check ps-0 custome-form-check">
-                                                <input class="checkbox_animated check-it" id="br10" name="brands"
-                                                    value="10" type="checkbox">
-                                                <label class="form-check-label">Sunt Corrupti</label>
-                                                <p class="font-light">(3)</p>
-                                            </div>
-                                        </li>
+                                        @foreach ($brands as $brand)
+                                            <li>
+                                                <div class="form-check ps-0 custome-form-check">
+                                                    <input class="checkbox_animated check-it" id="br{{$brand->id}}" name="brands" @if(in_array($brand->id,explode(',',$q_brands))) checked="checked" @endif value="{{$brand->id}}" type="checkbox" onchange="filterProductsByBrand(this)">
+                                                    <label class="form-check-label">{{$brand->name}}</label>
+                                                    <p class="font-light">{{$brand->products->count()}}</p>
+                                                </div>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -278,60 +197,15 @@
                                 aria-labelledby="headingOne">
                                 <div class="accordion-body category-scroll">
                                     <ul class="category-list">
-
-                                        <li>
-                                            <div class="form-check ps-0 custome-form-check">
-                                                <input class="checkbox_animated check-it" id="ct1" name="categories"
-                                                    type="checkbox" value="1">
-                                                <label class="form-check-label">Qui Ut</label>
-                                                <p class="font-light">(7)</p>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="form-check ps-0 custome-form-check">
-                                                <input class="checkbox_animated check-it" id="ct2" name="categories"
-                                                    type="checkbox" value="2">
-                                                <label class="form-check-label">Blanditiis Error</label>
-                                                <p class="font-light">(8)</p>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="form-check ps-0 custome-form-check">
-                                                <input class="checkbox_animated check-it" id="ct3" name="categories"
-                                                    type="checkbox" value="3">
-                                                <label class="form-check-label">Quam Quos</label>
-                                                <p class="font-light">(0)</p>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="form-check ps-0 custome-form-check">
-                                                <input class="checkbox_animated check-it" id="ct4" name="categories"
-                                                    type="checkbox" value="4">
-                                                <label class="form-check-label">Cupiditate Minus</label>
-                                                <p class="font-light">(5)</p>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="form-check ps-0 custome-form-check">
-                                                <input class="checkbox_animated check-it" id="ct5" name="categories"
-                                                    type="checkbox" value="5">
-                                                <label class="form-check-label">Dolores Et</label>
-                                                <p class="font-light">(4)</p>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="form-check ps-0 custome-form-check">
-                                                <input class="checkbox_animated check-it" id="ct6" name="categories"
-                                                    type="checkbox" value="6">
-                                                <label class="form-check-label">Quis Repudiandae</label>
-                                                <p class="font-light">(0)</p>
-                                            </div>
-                                        </li>
+                                        @foreach ($categories as $category)
+                                            <li>
+                                                <div class="form-check ps-0 custome-form-check">
+                                                    <input class="checkbox_animated check-it" id="ct{{$category->id}}" name="categories" type="checkbox" @if(in_array($category->id,explode(',',$q_categories))) checked="checked" @endif value="{{$category->id}}" onchange="filterProductsByCatogory(this)">
+                                                    <label class="form-check-label">{{$category->name}}</label>
+                                                    <p class="font-light">{{$category->products->count()}}</p>
+                                                </div>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -394,11 +268,11 @@
                                 <div class="page-view-filter">
                                     <div class="dropdown select-featured">
                                         <select class="form-select" name="orderby" id="orderby">
-                                            <option value="-1" selected="">Default</option>
-                                            <option value="1">Baru ke Lama</option>
-                                            <option value="2">Lama ke Baru</option>
-                                            <option value="3">Rendah ke Tinggi</option>
-                                            <option value="4">Tinggi ke Rendah</option>
+                                            <option value="-1" {{$order==-1? 'selected':''}}>Default</option>
+                                            <option value="1" {{$order==1? 'selected':''}}>Baru ke Lama</option>
+                                            <option value="2"{{$order==-2? 'selected':''}}>Lama ke Baru</option>
+                                            <option value="3"{{$order==-3? 'selected':''}}>Rendah ke Tinggi</option>
+                                            <option value="4"{{$order==-4? 'selected':''}}>Tinggi ke Rendah</option>
                                         </select>
                                     </div>
                                 </div>
@@ -476,7 +350,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0)" class="wishlist">
+                                            <a href="javascript:void(0)" onclick="addProductToWishlist({{$product->id}},'{{$product->name}}',1,{{$product->regular_price}})" class="wishlist">
                                                 <i data-feather="heart"></i>
                                             </a>
                                         </li>
@@ -557,14 +431,107 @@
 <form id="frmFilter" method="GET">
     <input type="hidden" name="page" id="page" value="{{$page}}"/>
     <input type="hidden" name="size" id="size" value="{{$size}}"/>
+    <input type="hidden" name="order" id="order" value="{{$order}}"/>
+    <input type="hidden" name="brands" id="brands" value="{{$q_brands}}"/>
+    <input type="hidden" name="categories" id="categories" value="{{$q_categories}}"/>
+    <input type="hidden" name="prange" id="prange" value=""/>
 </form>
 @endsection
 
 @push('scripts')
     <script>
-        $("#pagesize").on("change",function(){
-            $("#size").val($("#pagesize option:selected").val());
-            $("#frmFilter").submit();
+        $(function(){
+            $("#pagesize").on("change",function(){
+                $("#size").val($("#pagesize option:selected").val());
+                $("#frmFilter").submit();
+            });
+
+            $("#orderby").on("change",function(){
+                $("#order").val($("#orderby option:selected").val());
+                $("#frmFilter").submit();
+            });
+
+            var $range = $(".js-range-slider");
+            instance = $range.data("ionRangeSlider");
+            instance.update({
+                from:{{$from}},
+                to:{{$to}}
+            });
+
+            $("#prange").on("change",function(){
+                setTimeout(() => {
+                    $("#frmFilter").submit();
+                },1000);
+            });
         });
+
+        function filterProductsByBrand(brand) {
+            var brands = "";
+            $("input[name='brands']:checked").each(function(){
+                if (brands=="") 
+                {
+                    brands += this.value;    
+                } 
+                else {
+                    brands += "," + this.value;
+                }
+            });
+            $("#brands").val(brands);
+            $("#frmFilter").submit();
+        }
+        function filterProductsByCatogory(brand) {
+            var categories = "";
+            $("input[name='categories']:checked").each(function(){
+                if (categories=="") 
+                {
+                    categories += this.value;    
+                } 
+                else {
+                    categories += "," + this.value;
+                }
+            });
+            $("#categories").val(categories);
+            $("#frmFilter").submit();
+        }
+
+        function addProductToWishlist(id,name,quantity,price)
+        {
+            $.ajax({
+                type:'POST',
+                url:"{{route('wishlist.store')}}",
+                data:{
+                    "_token":"{{ csrf_token()}}",
+                    id:id,
+                    name:name,
+                    quantity:quantity,
+                    price:price
+                },
+                success:function(data){
+                    if(data.status == 200)
+                    {
+                        getCartWishlistCount();
+                        $.notify({
+                            icon:"fa fa-check",
+                            title:"Success",
+                            message:"! Produk telah ditambahkan ke Wishlist."
+                        });
+                    }
+                }
+            });
+        }
+        function getCartWishlistCount()
+        {
+            $.ajax({
+                type:'GET',
+                url:"{{route('shop.cart.wishlist.count')}}",
+                success:function(data){
+                    if (data.status==200)
+                    {
+                        $("#cart-count").html(data.cartCount); 
+                        $("#wishlist-count").html(data.wishlistCount);    
+                    }
+                }
+            });
+        }
     </script>
 @endpush

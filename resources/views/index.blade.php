@@ -3,19 +3,19 @@
 <section class="pt-0 poster-section">
     <div class="poster-image slider-for custome-arrow classic-arrow">
         <div>
-            <img src="assets/images/furniture-images/poster/DEL.png" class="img-fluid blur-up lazyload" alt="">
+            <img src="assets/images/furniture-images/poster/1.png" class="img-fluid blur-up lazyload" alt="">
         </div>
         <div>
-            <img src="assets/images/furniture-images/poster/LV.png" class="img-fluid blur-up lazyload" alt="">
+            <img src="assets/images/furniture-images/poster/2.png" class="img-fluid blur-up lazyload" alt="">
         </div>
         <div>
-            <img src="assets/images/furniture-images/poster/HP.png" class="img-fluid blur-up lazyload" alt="">
+            <img src="assets/images/furniture-images/poster/3.png" class="img-fluid blur-up lazyload" alt="">
         </div>
     </div>
     <div class="slider-nav image-show">
         <div>
             <div class="poster-img">
-                <img src="assets/images/furniture-images/poster/l1.png" class="img-fluid blur-up lazyload" alt="">
+                <img src="assets/images/furniture-images/poster/t1.png" class="img-fluid blur-up lazyload" alt="">
                 <div class="overlay-color">
                     <i class="fas fa-plus theme-color"></i>
                 </div>
@@ -23,7 +23,7 @@
         </div>
         <div>
             <div class="poster-img">
-                <img src="assets/images/furniture-images/poster/l2.png" class="img-fluid blur-up lazyload" alt="">
+                <img src="assets/images/furniture-images/poster/t2.png" class="img-fluid blur-up lazyload" alt="">
                 <div class="overlay-color">
                     <i class="fas fa-plus theme-color"></i>
                 </div>
@@ -32,7 +32,7 @@
         </div>
         <div>
             <div class="poster-img">
-                <img src="assets/images/furniture-images/poster/l3.png" class="img-fluid blur-up lazyload" alt="">
+                <img src="assets/images/furniture-images/poster/t3.png" class="img-fluid blur-up lazyload" alt="">
                 <div class="overlay-color">
                     <i class="fas fa-plus theme-color"></i>
                 </div>
@@ -47,20 +47,6 @@
             <p>BELI SATU GRATIS SATU <span class="theme-color">FREE</span></p>
             <h2>Rp59.000 <span class="theme-color"><del>Rp65.000</del></span></h2>
 
-        </div>
-    </div>
-
-    <div class="right-side-contain">
-        <div class="social-image">
-            <h6>Facebook</h6>
-        </div>
-
-        <div class="social-image">
-            <h6>Instagram</h6>
-        </div>
-
-        <div class="social-image">
-            <h6>Twitter</h6>
         </div>
     </div>
 </section>

@@ -38,4 +38,10 @@ class CartController extends Controller
         Cart::instance('cart')->destroy();
         return redirect()->route('cart.index');
     }
+    public function getWishlistProducts()
+    {
+        $items = Cart::instance("wishlist")->content();
+        return view('wishlist',['items'=>$items]);
+    }
+
 }
