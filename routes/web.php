@@ -1,12 +1,19 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,9 +40,14 @@ Route::delete('/cart/clear',[CartController::class,'clearCart'])->name('cart.cle
 
 Route::get('/wishlist',[CartController::class,'getWishlistProducts'])->name('wishlist.list');
 Route::post('/wishlist/add',[WishlistController::class,'addProductToWishlist'])->name('wishlist.store');
+Route::delete('/wishlist/remove',[WishlistController::class,'removeProductWishlist'])->name('wishlist.remove');
+Route::delete('/wishlist/clear',[WishlistController::class,'clearWishlist'])->name('wishlist.clear');
+Route::post('/wishlist/move-to-cart',[WishlistController::class,'moveToCart'])->name('wishlist.move.to.cart');
 
 Route::get('/about', [AboutController::class,'index'])->name('about.index');
-
+Route::get('/contact', [ContactController::class,'index'])->name('contact.index');
+Route::get('/blog', [BlogController::class,'index'])->name('blog.index');
+Route::get('/search', [SearchController::class,'search'])->name('search.shop');
 Auth::routes();
 
 Route::middleware('auth')->group(function(){
@@ -43,5 +55,16 @@ Route::middleware('auth')->group(function(){
 });
 
 Route::middleware(['auth','auth.admin'])->group(function(){
-    Route::get('/admin',[AdminController::class,'index'])->name(('admin.index'));
+    Route::get('/admin/dashboard',[AdminController::class,'index'])->name(('admin.index'));
+    Route::get('/admin/category',[AdminCategoryController::class,'index'])->name('admin.category');
+    Route::get('/admin/product',[ProductController::class,'index'])->name('admin.product');
+//category
+    Route::get('/admin/category/create', [CategoryController::class, 'create'])->name('category.create');
+    Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('/category/{id}/edit', [CategoryController::class,'edit'])->name('category.edit');
+    Route::put('/category/{id}', [CategoryController::class,'update'])->name('category.update');
+    Route::delete('/category/{id}', [CategoryController::class,'destroy'])->name('category.destroy');
+//product
+    Route::get('/admin/product/create',[ProductController::class,'create'])->name(('product.create'));
+    Route::post('/admin/product/add', [ProductController::class, 'addProduct'])->name('addProduct');
 });

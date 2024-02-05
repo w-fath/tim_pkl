@@ -21,7 +21,7 @@ class CartController extends Controller
         $price = $product->sale_price ? $product->sale_price : $product->regular_price;
         Cart::instance('cart')->add($product->id, $product->name, $request->quantity, $price)->associate('App\Models\Product');
         return redirect()->back()->with('massage','Succsess ! Item telah ditambahkan');
-    }
+    } 
     public function updateCart(Request $request)
     {
         Cart::instance('cart')->update($request->rowId,$request->quantity);
@@ -43,5 +43,4 @@ class CartController extends Controller
         $items = Cart::instance("wishlist")->content();
         return view('wishlist',['items'=>$items]);
     }
-
 }

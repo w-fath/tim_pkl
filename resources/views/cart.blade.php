@@ -74,8 +74,8 @@
                                         </div>
                                         <div class="col">
                                             <h2 class="td-color">
-                                                <a href="javascript:void(0)">
-                                                    <i class="fas fa-times"></i>
+                                                <a href="javascript:void(0)" onclick="removeItemrowCart('{{$item->rowId}}')">
+                                                    <i class='far fa-trash-alt' style='font-size:13px; padding:6px; margin-left:1px; margin-righ:1px'></i>
                                                 </a>
                                             </h2>
                                         </div>
@@ -119,7 +119,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> 
 
                 <div class="cart-checkout-section">
                     <div class="row g-4">
@@ -168,7 +168,9 @@
                 <div class="col-md-12 text-center">
                     <h2>Keranjang Anda Kosong !</h2>
                     <h5 class="mt-3">Tambahkan item ke dalamnya sekarang</h5>
-                    <a href="{{route('shop.index')}}" class="btn btn-warning mt-5">Belanja Sekarang</a>
+                    <a href="{{route('shop.index')}}" class="btn btn-warning mt-5">
+                        <i class="fas fa-arrow-left"></i> Lanjut Belanja
+                    </a>
                 </div>
             </div>
         @endif

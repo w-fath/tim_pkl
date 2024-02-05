@@ -182,7 +182,7 @@
                                             <a href="javascript:void(0)">XXL</a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> 
                             </div>
                         </div>
 
@@ -420,7 +420,7 @@
                 <div class="subsribe-input">
                     <div class="input-group">
                         <input type="text" class="form-control subscribe-input" placeholder="Your Email Address">
-                        <button class="btn btn-solid-default" type="button">Button</button>
+                        <button class="btn btn-solid-default" type="button">Subscribe</button>
                     </div>
                 </div>
             </div>

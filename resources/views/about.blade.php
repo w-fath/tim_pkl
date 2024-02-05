@@ -69,8 +69,9 @@
                             gaya hidup lainnya dari merek-merek terkemuka. 
                             Dengan koleksi produk yang selalu diperbarui, kami berusaha 
                             memberikan Anda akses ke tren terbaru dan gaya terkini.</p>
-                            <a href="{{route('shop.index')}}" class="btn btn-solid-default btn fw-bold mb-0 ms-0">
-                                <i class="fas fa-arrow-left"></i> Lanjut Belanja</a>
+                            <a href="{{route('contact.index')}}" class="btn btn-solid-default btn fw-bold mb-0 ms-0">
+                                Contact Us
+                            </a>
                     </div>
                 </div>
             </div>

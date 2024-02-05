@@ -116,7 +116,7 @@
                             <div class="menu-left">
                                 <div class="brand-logo">
                                     <a href="{{route('app.index')}}">
-                                        <img src="{{asset('assets/images/.png')}}" class="h-logo img-fluid blur-up lazyload"
+                                        <img src="{{asset('assets/images/furniture-images/img/logo.png')}}" class="h-logo img-fluid blur-up lazyload"
                                             alt="logo">
                                     </a>
                                 </div>
@@ -137,11 +137,10 @@
                                                 </div>
                                             </li>
                                             <li><a href="{{route('app.index')}}" class="nav-link menu-title">Home</a></li>
-                                            <li><a href="{{route('shop.index')}}" class="nav-link menu-title">Produk</a></li>
+                                            <li><a href="{{route('shop.index')}}" class="nav-link menu-title">Shop</a></li>
                                             <li><a href="{{route('about.index')}}" class="nav-link menu-title">About Us</a></li>
-                                            <li><a href="contact-us.html" class="nav-link menu-title">Contact Us</a>
-                                            </li>
-                                            <li><a href="blog.html" class="nav-link menu-title">Blog</a></li>
+                                            <li><a href="{{route('contact.index')}}" class="nav-link menu-title">Contact Us</a></li>
+                                            <li><a href="{{route('blog.index')}}" class="nav-link menu-title">Blog</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -277,19 +276,19 @@
                         <div class="footer-contact">
                             <div class="brand-logo">
                                 <a href="index.htm" class="footer-logo float-start">
-                                    <img src="{{asset('assets/images/.png')}}" class="f-logo img-fluid blur-up lazyload"
+                                    <img src="{{asset('assets/images/furniture-images/img/logo.png')}}" class="f-logo img-fluid blur-up lazyload"
                                         alt="logo">
                                 </a>
                             </div>
                             <ul class="contact-lists" style="clear:both;">
                                 <li>
-                                    <span><b>WhatsApp:</b> <span class="font-light"> +62 85323214564</span></span>
+                                    <span><b>WhatsApp:</b> <span class="font-light"> +62 85123456789</span></span>
                                 </li>
                                 <li>
                                     <span><b>Alamat:</b><span class="font-light"> Guluk-Guluk, Sumenep, Madura</span></span>
                                 </li>
                                 <li>
-                                    <span><b>Email:</b><span class="font-light"> ekeanakti@gmail.com</span></span>
+                                    <span><b>Email:</b><span class="font-light"> timsuksespkl@gmail.com</span></span>
                                 </li>
                             </ul>
                         </div>

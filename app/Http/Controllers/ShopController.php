@@ -61,7 +61,7 @@ class ShopController extends Controller
                             $query->whereIn('category_id', explode(',', $q_categories))->orWhereRaw("'".$q_categories."'=''");
                             })
                             ->whereBetween('regular_price',array($from,$to))
-                    ->orderBy('created_at', 'DESC')->orderBy($o_colum, $o_order)->paginate($size);
+                            ->orderBy('created_at', 'DESC')->orderBy($o_colum, $o_order)->paginate($size);
         return view('shop',['products'=>$products,'page'=>$page,'size'=>$size, 'order'=>$order, 'brands'=>$brands, 'q_brands'=>$q_brands, 'categories'=>$categories,'q_categories'=>$q_categories, 'from'=>$from, 'to'=>$to]);
     }
     public function productDetails($slug)
@@ -75,5 +75,5 @@ class ShopController extends Controller
         $cartCount = Cart::instance("cart")->content()->count();
         $wishlistCount = Cart::instance("wishlist")->content()->count();
         return response()->json(['status' => 200, 'cartCount'=>$cartCount,'wishlistCount'=>$wishlistCount]);
-    }
+    } 
 }

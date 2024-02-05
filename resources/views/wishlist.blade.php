@@ -9,7 +9,7 @@
         <li></li>
         <li></li>
         <li></li>
-        <li></li>
+        <li></li> 
         <li></li>
         <li></li>
     </ul>
@@ -67,12 +67,12 @@
                                     </div>
                                     <div class="col">
                                         <h2 class="td-color">
-                                            <a href="javascript:void(0)" class="icon">
+                                            <a href="javascript:void(0)" class="icon" href="javascript:void(0)" class="icon" onclick="removeProductWishlist('{{$item->rowId}}')">
                                                 <i class='far fa-trash-alt' style='font-size:13px; padding:6px; margin-left:1px; margin-righ:1px'></i>
                                             </a>
                                         </h2>
                                         <h2 class="td-color">
-                                            <a href="cart.php" class="icon">
+                                            <a href="javascript:void(0)" class="icon" onclick="moveToCart('{{$item->rowId}}')">
                                                 <i class="fas fa-shopping-cart"></i>
                                             </a>
                                         </h2>
@@ -90,10 +90,17 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="javascript:void(0)" class="icon">
-                                    <i data-feather="shopping-cart" style='padding:5%; margin:4.3px; margin-top: 10px;'></i>
-                                </a>
-                                <a href="javascript:void(0)" class="icon" >
+                                @if ($item->model->stock_status == 'instock')
+                                    <a href="javascript:void(0)" class="icon" onclick="moveToCart('{{$item->rowId}}')">
+                                        <i data-feather="shopping-cart" style='padding:5%; margin:4.3px; margin-top: 10px;'></i>
+                                    </a> 
+                                @else
+                                    <a href="javascript:void(0)" class="icon disabled">
+                                        <i data-feather="shopping-cart" style='padding:5%; margin:4.3px; margin-top: 10px;'></i>
+                                    </a>
+                                @endif
+                                
+                                <a href="javascript:void(0)" class="icon" onclick="removeProductWishlist('{{$item->rowId}}')">
                                     <i class='far fa-trash-alt' style='font-size:14px; padding:10.3px; margin-bottom: 4px'></i>
                                 </a>
                             </td>
@@ -103,20 +110,103 @@
                 </table>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12 text-end d-flex d-block justify-content-end">
+                <a href="javascript:void(0)" onclick="clearWishlist()">Hapus Semua</a>
+            </div>
+        </div>
         @else
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <h2>Your Wishlist Is empty !</h2>
-                    <h5 class="mt-3">add items to it now</h5>
-                    <a href="{{route('shop.index')}}" class="btn btn-warning mt-5">Shop Now</a>
+                    <h2>Daftar Suka Anda Kosong !</h2>
+                    <h5 class="mt-3">Tambahkan item ke dalamnya sekarang</h5>
+                    <a href="{{route('shop.index')}}" class="btn btn-warning mt-5">
+                        <i class="fas fa-arrow-left"></i> Lanjut Belanja
+                    </a>
                 </div>
             </div>
         @endif
     </div>
 </section>
-<!-- Cart Section End -->   
+
+
+<form action="{{route('wishlist.remove')}}" id="deleteFormWishlist" method="POST">
+    @csrf
+    @method('delete')
+    <input type="hidden" id="rowId" name="rowId"/>
+</form>
+
+<form action="{{route('wishlist.clear')}}" id="clearWishlist" method="POST">
+    @csrf
+    @method('delete')
+</form>
+
+<form id="moveToCart" action="{{route('wishlist.move.to.cart')}}" method="POST">
+    @csrf
+    <input type="hidden" id="mrowId" name="rowId"/>
+</form>
+
 @endsection
+
+@push('scripts')
+    <script>
+        function removeProductWishlist(rowId)
+        {
+            $("#rowId").val(rowId);
+            $("#deleteFormWishlist").submit();
+        }
+        function clearWishlist()
+        {
+            $("#clearWishlist").submit();
+        }
+        function moveToCart(rowId)
+        {
+            $("#mrowId").val(rowId);
+            $("#moveToCart").submit();
+        }
+    </script>
+@endpush
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script src="https://unpkg.com/feather-icons"></script>
 <script>
     feather.replace();
-  </script>
+</script>

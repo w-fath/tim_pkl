@@ -72,13 +72,13 @@
                 <div class="input">
                     <label for="name">Username</label>
                     <input type="email" id="name" name="email" :value="old('email')" required="" autofocus="" autocomplete="name">
-                    @error('email') <span class="text-danger mt-3">{{$massage}} </span> @enderror
+                    @error('email') <span class="text-danger mt-3">{{$message}} </span> @enderror
                 </div>
 
                 <div class="input">
                     <label for="pass">Password</label>
                     <input type="password" id="pass" class="block mt-1 w-full" name="password" required="" autocomplete="current-password">
-                    @error('password') <span class="text-danger mt-3">{{$massage}} </span> @enderror
+                    @error('password') <span class="text-danger mt-3">{{$message}} </span> @enderror
                 </div>
 
                 <a href="javascript:void(0)" class="pass-forgot">Forgot your password?</a>
